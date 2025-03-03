@@ -20,7 +20,7 @@ namespace PruebaTecnica.API.Controllers
         public async Task<IActionResult> CreateBankAccount([FromBody] CreateBankAccountModel model)
         {
             var bankAccount = await _bankAccountService.CreateBankAccountAsync(model.UserId, model.AccountNumber, model.Balance);
-            return CreatedAtAction(nameof(GetBalance), new { bankAccountId = bankAccount.Id }, bankAccount);
+            return CreatedAtAction(nameof(GetBalance), new { accountNumber = bankAccount.AccountNumber }, bankAccount);
         }
 
         [HttpGet("{accountNumber}/balance")]
